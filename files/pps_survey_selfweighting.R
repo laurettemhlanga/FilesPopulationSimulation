@@ -26,7 +26,7 @@ partition_prevalence <- function(overall_prevalence1,
   
   if (any(cluster_prevalences < 0)){
     
-    x = replace(cluster_prevalences, which(cluster_prevalences<0), mean(cluster_prevalences))
+    cluster_prevalences = replace(cluster_prevalences, which(cluster_prevalences<0), mean(cluster_prevalences))
     
   }else{
     

@@ -1,5 +1,6 @@
-
 devtools::load_all(".")
+library()
+install_github("laurettemhlanga/PopulationSimulation")
 library(PopulationSimulation)
 
 
