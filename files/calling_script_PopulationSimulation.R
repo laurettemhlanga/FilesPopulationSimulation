@@ -1,5 +1,5 @@
 devtools::load_all(".")
-library()
+library(devtools)
 install_github("laurettemhlanga/PopulationSimulation")
 library(PopulationSimulation)
 
@@ -10,15 +10,15 @@ birth_count <- birth_counts_fun(total_births = 1000,
                                 delta = 0.5,
                                 birthrate = birth_rate_fun)
 
-incidence_m <- incidence_matrix_fun(age_steps = 3, 
-                                    birth_dates = 0:5, 
-                                    generate_incidence_fun = incidence_fun, 
+incidence_m <- incidence_matrix_fun(age_steps = 3,
+                                    birth_dates = 0:5,
+                                    generate_incidence_fun = incidence_fun,
                                     delta = 0.5)
 
 
-base_mortality_m <- base_mortality_matrix_fun(3, 
-                                              0:5, 
-                                              delta = 0.5, 
+base_mortality_m <- base_mortality_matrix_fun(3,
+                                              0:5,
+                                              delta = 0.5,
                                               generate_base_mortality_fun = base_mortality_fun)
 
 
