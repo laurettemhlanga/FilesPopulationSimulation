@@ -6,7 +6,7 @@ library(PopulationSimulation)
 
 
 birth_count <- birth_counts_fun(total_births = 1000,
-                                birth_dates = 1945:1950,
+                                birth_dates = 0:5,
                                 delta = 0.5,
                                 birthrate = birth_rate_fun)
 
@@ -30,7 +30,7 @@ susceptible_pop_counts <- susceptible_population_fun(cumulative_survival_matrix 
                                                 birth_counts = birth_count)
 
 
-infected_survival_probs <- infected_mortality_array_fun (age_steps = 3, birth_dates = 1945:1950,
+infected_survival_probs <- infected_mortality_array_fun (age_steps = 3, birth_dates = 0:5,
                                                      excess_mortality = excess_mortality_fun,
                                                      base_mortality = base_mortality_fun,
                                                      delta = 0.5)
