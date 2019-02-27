@@ -1,7 +1,6 @@
-devtools::load_all(".")
-library(devtools)
-install_github("laurettemhlanga/PopulationSimulation")
-library(PopulationSimulation)
+# 
+# install_github("laurettemhlanga/PopulationSimulation")
+# library(PopulationSimulation)
 
 
 
@@ -22,12 +21,23 @@ base_mortality_m <- base_mortality_matrix_fun(3,
                                               generate_base_mortality_fun = base_mortality_fun)
 
 
+
+
 survival_prob <- susceptible_cumulative_survival_fun(incidence_matrix = incidence_m,
                                                         base_mortality_matrix = base_mortality_m,
                                                         delta = 0.5)
 
-susceptible_pop_counts <- susceptible_population_fun(cumulative_survival_matrix = survival_prob,
+
+
+
+susceptible_pop_counts <- susceptible_population(cumulative_survival_matrix = survival_prob,
                                                 birth_counts = birth_count)
+
+
+
+infected_0 <- incidence_matrix_function(incidence_matrix = incidence_m,
+                          base_mortality_matrix = base_mortality_m,
+                          delta = 0.5) * susceptible_pop_counts
 
 
 infected_survival_probs <- infected_mortality_array_fun (age_steps = 3, birth_dates = 0:5,
@@ -35,10 +45,7 @@ infected_survival_probs <- infected_mortality_array_fun (age_steps = 3, birth_da
                                                      base_mortality = base_mortality_fun,
                                                      delta = 0.5)
 
-transformed <- transform_data(age_max = 3,
-                              data_to_transform = susceptible_pop_counts,
-                              date_of_birth = 1945:1950,
-                              delta = 0.5)
+
 
 
 infected <- infected_population_fun(susceptible_pop_counts = susceptible_pop_counts,
