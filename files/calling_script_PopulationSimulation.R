@@ -1,11 +1,10 @@
-# 
+#
 # install_github("laurettemhlanga/PopulationSimulation")
-# library(PopulationSimulation)
+library(PopulationSimulation)
 
 
 
-birth_count <- birth_counts_fun(total_births = 1000,
-                                birth_dates = 0:5,
+birth_count <- birth_counts_fun(t_1 = 0, t_2 = 5,
                                 delta = 0.5,
                                 birthrate = birth_rate_fun)
 
@@ -35,7 +34,7 @@ susceptible_pop_counts <- susceptible_population(cumulative_survival_matrix = su
 
 
 
-infected_0 <- incidence_matrix_function(incidence_matrix = incidence_m,
+infected_0 <- incidence_matrix_exp(incidence_matrix = incidence_m,
                           base_mortality_matrix = base_mortality_m,
                           delta = 0.5) * susceptible_pop_counts
 
