@@ -1,6 +1,7 @@
-#
-# install_github("laurettemhlanga/PopulationSimulation")
-library(PopulationSimulation)
+
+setwd("H:/FilesPopulationSimulation")
+files.sources = list.files("H:/PopulationSimulation/R")
+sapply(files.sources, source)
 
 list_of_times = seq(t_1, t_2 , delta)
 
