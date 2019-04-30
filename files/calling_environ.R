@@ -7,7 +7,7 @@
 #
 #
 # x = probability_surviving_infected(max_age = 3,
-#                                list_of_times = 1985:1990,
+#                                matrix_of_times  = 1985:1990,
 #                                time_step = 1,
 #                                excess_mortality = time_indep_age_linear_excess_mortality,
 #                                base_mortality = time_indep_age_linear_base_mortality)
@@ -22,37 +22,37 @@
 
 
 
-maximum_inc <- function(tim)
+maximum_inc <- function(matrix_of_times)
   {
 
-  return( ifelse(list_of_times <= 0, 0.006,
-         ifelse( list_of_times <= 18, 0.006 + 0.123 * (list_of_times - 12),
-                 ifelse(list_of_times <= 24, 0.8,
-                        ifelse(list_of_times <= 31, 0.8 - (0.05 * (list_of_times -24)), 0)))))
+  return( ifelse(matrix_of_times  <= 0, 0.006,
+         ifelse( matrix_of_times  <= 18, 0.006 + 0.123 * (matrix_of_times  - 12),
+                 ifelse(matrix_of_times  <= 24, 0.8,
+                        ifelse(matrix_of_times  <= 31, 0.8 - (0.05 * (matrix_of_times  -24)), 0)))))
 }
 
 
-# norm_fac <-  function(list_of_times,
+# norm_fac <-  function(matrix_of_times ,
 #                       beta,
 #                       sigm2)
 # {
 #
-#   return(sqrt(2 * pi* sigm2) *(exp((beta - ((sigm2)/2)) * maximum_inc(list_of_times))))
+#   return(sqrt(2 * pi* sigm2) *(exp((beta - ((sigm2)/2)) * maximum_inc(matrix_of_times ))))
 # }
 
 
 
-incidence_mahiane <- function(age, list_of_times, age_debut = 0,
+incidence_mahiane <- function(matrix_of_ages, matrix_of_times , age_debut = 0,
                               beta = 2.3,
                               sigm2 = 0.5)
   {
 
   # to get reasonable prevalence multiply the realised incidence by 0.1
 
-  norm_fac <- sqrt(2 * pi* sigm2) *(exp((beta - ((sigm2)/2)) * maximum_inc(list_of_times)))
+  norm_fac <- sqrt(2 * pi* sigm2) *(exp((beta - ((sigm2)/2)) * maximum_inc(matrix_of_times )))
 
-  incidence <- 0.1 * ((norm_fac / ((age - age_debut) * sqrt(2 * pi * sigm2))) *
-    exp(-(((log(age - age_debut) - beta)^2) / (2 * sigm2))))
+  incidence <- 0.1 * ((norm_fac / ((matrix_of_ages - age_debut) * sqrt(2 * pi * sigm2))) *
+    exp(-(((log(matrix_of_ages - age_debut) - beta)^2) / (2 * sigm2))))
 
   return(incidence)
 }
