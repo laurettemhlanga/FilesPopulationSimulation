@@ -10,7 +10,7 @@ sapply(files.sources, source)
 Do_one_simulation <- function(first_birth_time = 1985, last_birth_time = 1990, time_step = 1, max_age = 3, 
                               birth_rate = constant_birth_rate, base_mortality = time_indep_age_linear_base_mortality, 
                               incidence = time_indept_age_tent_incidence,
-                              excess_mortality = excess_mortality_fun)
+                              excess_mortality = tau_linear_excess_mortality)
   {
   
   #wrapper function to the functions in Population simulation project. 
@@ -34,6 +34,13 @@ Do_one_simulation <- function(first_birth_time = 1985, last_birth_time = 1990, t
   
   susceptible_pop_counts <- susceptible_population(cumulative_survival_matrix = survival_prob,
                                                    birth_counts = birth_count)
+  
+  
+  
+  
+  
+  
+  
   
   return(susceptible_pop_counts)
   
